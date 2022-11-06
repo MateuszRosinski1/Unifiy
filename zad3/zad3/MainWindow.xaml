@@ -9,20 +9,20 @@
     <Grid>
         <DockPanel>
             <DockPanel>
-                <Button DockPanel.Dock="Bottom">Bottom</Button>
-                <Button DockPanel.Dock="Left">Left</Button>
-                <Button DockPanel.Dock="Right">Right</Button>
+                <Button DockPanel.Dock="Bottom" Content="Bottom"/>
+                <Button DockPanel.Dock="Left" Content="Left"/>
+                <Button DockPanel.Dock="Right" Content="Right"/>
                 <DockPanel>
-                    <Button DockPanel.Dock="Top" Background="Red" Content="Top" Height="50"></Button>
-                    <Button DockPanel.Dock="Top" Background="Green" Content="Top2" Height="60" Width="60"></Button>
+                    <Button DockPanel.Dock="Top" Background="Red" Content="Top" Height="50"/>
+                    <Button DockPanel.Dock="Top" Background="Green" Content="Top2" Height="60" Width="60"/>
                     <DockPanel DockPanel.Dock="Left">
-                        <Button Width="80" Background="Blue" DockPanel.Dock="Top" Content="Top3"></Button>
-                        <Button DockPanel.Dock="Bottom" Content="Fill"></Button>
+                        <Button Width="80" Background="Blue" DockPanel.Dock="Top" Content="Top3"/>
+                        <Button DockPanel.Dock="Bottom" Content="Fill"/>
 
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Left">
-                        <Button FontSize="10" Content="Right3" Height="40"></Button>
-                        <Button FontSize="10" Content="Right2" Height="40"></Button>
+                        <Button FontSize="10" Content="Right3" Height="40"/>
+                        <Button FontSize="10" Content="Right2" Height="40"/>
                     </DockPanel>
                 </DockPanel>
             </DockPanel>

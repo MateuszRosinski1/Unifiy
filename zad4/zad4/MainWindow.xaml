@@ -8,16 +8,14 @@
         Title="MainWindow" Height="550" Width="800">
     <Grid>
         <Canvas Background="LightCyan">
-            <Button Height="40" Width="80" Content="Siostra" Canvas.Right="300" Canvas.Top="50" ></Button>
-            <Button Height="40" Width="80" Content="Ja"  Canvas.Left="300" Canvas.Top="50"></Button>
-            <Button Height="40" Width="80" Content="Tata" Canvas.Left="200" Canvas.Top="200"></Button>
-            <Button Height="40" Width="80" Content="Mama" Canvas.Right="200" Canvas.Top="200"></Button>
-            <Button Height="40" Width="80" Content="Babcia" Canvas.Right="250" Canvas.Bottom="150"></Button>
-            <Button Height="40" Width="80" Content="Dziadek" Canvas.Right="100" Canvas.Bottom="150"></Button>
-            <Button Height="40" Width="80" Content="Babcia" Canvas.Left="250" Canvas.Bottom="150"></Button>
-            <Button Height="40" Width="80" Content="Dziadek" Canvas.Left="100" Canvas.Bottom="150"></Button>
-
-
+            <Button Height="40" Width="80" Content="Siostra" Canvas.Right="300" Canvas.Top="50"/>
+            <Button Height="40" Width="80" Content="Ja"  Canvas.Left="300" Canvas.Top="50"/>
+            <Button Height="40" Width="80" Content="Tata" Canvas.Left="200" Canvas.Top="200"/>
+            <Button Height="40" Width="80" Content="Mama" Canvas.Right="200" Canvas.Top="200"/>
+            <Button Height="40" Width="80" Content="Babcia" Canvas.Right="250" Canvas.Bottom="150"/>
+            <Button Height="40" Width="80" Content="Dziadek" Canvas.Right="100" Canvas.Bottom="150"/>
+            <Button Height="40" Width="80" Content="Babcia" Canvas.Left="250" Canvas.Bottom="150"/>
+            <Button Height="40" Width="80" Content="Dziadek" Canvas.Left="100" Canvas.Bottom="150"/>
         </Canvas>
     </Grid>
 </Window>
