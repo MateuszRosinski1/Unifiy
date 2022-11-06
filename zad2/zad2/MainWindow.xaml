@@ -9,20 +9,20 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Imie"></Label>
+                <Label Content="Imie"/>
                 <TextBox Height="25" Width="100" Margin="38,0,0,0"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Nazwisko"></Label>
+                <Label Content="Nazwisko"/>
                 <TextBox Height="25" Width="100" Margin="12,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Data ur"></Label>
+                <Label Content="Data ur"/>
                 <TextBox Height="25" Width="100" Margin="23,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Semestr"></Label>
+                <Label Content="Semestr"/>
                 <TextBox Height="25" Width="100" Margin="19,0,0,0"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center">
