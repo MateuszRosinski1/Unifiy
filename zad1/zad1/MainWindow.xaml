@@ -41,7 +41,6 @@
             <Button Grid.Column="1" Content="ON/OFF" Background="Green" Height="25"/>
             <Button Grid.Column="2" Content="AC" Background="red" Height="25"/>
             <Button Grid.Column="3" Content="=" Height="25"/>
-
         </Grid>
     </Grid>
 </Window>
