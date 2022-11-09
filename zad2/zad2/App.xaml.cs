@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp1
+namespace zad2
 {
     /// <summary>
     /// Logika interakcji dla klasy App.xaml
