@@ -1,15 +1,16 @@
-﻿<Window x:Class="Lista6.MainWindow"
+﻿<Window x:Class="Lista6.SignUpPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lista6"
         mc:Ignorable="d"
-        Height="650" Width="600"
-        MinHeight="500" MinWidth="400"
+        Title="SignUpPage" Height="650" Width="600"   
+        MinHeight="550" MinWidth="400"
         Background="#36393F"
         ResizeMode="CanResizeWithGrip"
-        Icon="/Ikonka2.png" WindowStyle="None">
+        Icon="/Ikonka2.png"
+        WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -59,7 +60,6 @@
                     </Image.Source>
                 </Image>
                 <Label Content="Unifiy ®" Foreground="#92969c" FontWeight="DemiBold" FontSize="25" VerticalAlignment="Center"/>
-
             </StackPanel>
 
 
@@ -67,40 +67,38 @@
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Label Foreground="#92969c" Content="Login" Margin="0,10,0,0"/>
-                <TextBox x:Name="textboxlogin" Style="{StaticResource RoundedTextBox}" HorizontalContentAlignment="Center"  BorderBrush="Transparent" Padding="0,5,0,0" Background="#555a63" Height="30" Width="300" Margin="0,10,0,50"/>
+                <TextBox x:Name="tblogin"  Style="{StaticResource RoundedTextBox}" HorizontalContentAlignment="Center"  BorderBrush="Transparent" Padding="0,5,0,0" Background="#555a63" Height="30" Width="300" Margin="0,10,0,40"/>
             </StackPanel>
-            
+
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Label Foreground="#92969c" Content="Password" Margin="0,10,0,0"/>
-                <Border Height="30" Width="300" BorderThickness="1" Background="#555a63" CornerRadius="4" Margin="0,10,20,50">
-                    <PasswordBox HorizontalContentAlignment="Center" Padding="0,5,0,0" Height="30" Width="280" x:Name="pbHaslo" Background="#555a63" BorderThickness="0"/>
+                <Label Foreground="#92969c" Content="E-mail" Margin="0,0,0,0"/>
+                <TextBox x:Name="textboxemail"  Style="{StaticResource RoundedTextBox}" HorizontalContentAlignment="Center"  BorderBrush="Transparent" Padding="0,5,0,0" Background="#555a63" Height="30" Width="300" Margin="0,0,0,50"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Foreground="#92969c" Content="Password" Margin="0,-10,0,0"/>
+                <Border Height="30" Width="300" BorderThickness="1" Background="#555a63" CornerRadius="4" Margin="0,-10,20,40">
+                    <PasswordBox HorizontalContentAlignment="Center" Padding="0,5,0,0" Height="30" Width="280" Name="PBHaslo" Background="#555a63" BorderThickness="0"/>
                 </Border>
             </StackPanel>
-            
-            <Button Content="Zaloguj" Width="150" Height="50" Click="LogInButton_Click" Margin="0,-10,0,10">
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Foreground="#92969c" Content="Confirm Password" Margin="0,0,0,0"/>
+                <Border Height="30" Width="300" BorderThickness="1" Background="#555a63" CornerRadius="4" Margin="0,0,70,20">
+                    <PasswordBox HorizontalContentAlignment="Center" Padding="0,5,0,0" Height="30" Width="280" Name="PbConfirmHaslo" Background="#555a63" BorderThickness="0"/>
+                </Border>
+            </StackPanel>
+
+            <Button Content="Zarejestruj" Width="150" Height="50" Click="SignInButton_Click" Margin="0,10,0,10">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="6"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Label Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold" Foreground="#151617" Height="30" Content="Nie masz jescze konta?"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="Label_LeftButtonDown" Height="30" FontSize="15" FontStyle="Italic" FontWeight="DemiBold" Content="Zarejestruj się! "  Grid.Column="1" Margin="0,0,133,70">
-                    <Label.Style>
-                        <Style TargetType="Label">
-                            <Setter Property="Foreground" Value="#095db5"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="#0c7aed"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Label.Style>
-                </Label>
-            </StackPanel>
-            
+
+          
+
         </StackPanel>
 
     </Grid>

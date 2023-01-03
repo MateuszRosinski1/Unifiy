@@ -8,8 +8,8 @@
         Title="MainPage" Height="650" Width="1000" 
         Background="#36393F"
         ResizeMode="CanResizeWithGrip"
-        WindowStyle="None"
-        Icon="/Ikonka2.png">
+        Icon="/Ikonka2.png"
+        WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
