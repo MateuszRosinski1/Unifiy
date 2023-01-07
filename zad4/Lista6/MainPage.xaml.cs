@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Lista6
 {
@@ -19,9 +10,12 @@ namespace Lista6
     /// </summary>
     public partial class MainPage : Window
     {
+        AppOperator ao = new AppOperator();
         public MainPage()
         {
             InitializeComponent();
+            this.DataContext = ao;
+            ao.ProgresBarWidth.Insert(0,471.59999999999997);
         }
 
         private void MinimalizeButton_Click(object sender, RoutedEventArgs e)
@@ -39,6 +33,7 @@ namespace Lista6
             {
                 this.WindowState = WindowState.Normal;
             }
+            ProgresbarWidthSetter();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -53,5 +48,14 @@ namespace Lista6
                 DragMove();
             }
         }
+
+        private void ProgresbarWidthSetter()
+        {
+            double value = (MusicBar.ActualWidth/10)*6;          
+            ao.ProgresBarWidth.Insert(0,value);
+
+
+        }
+     
     }
 }

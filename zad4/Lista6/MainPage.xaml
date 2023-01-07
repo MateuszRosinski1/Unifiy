@@ -8,7 +8,7 @@
         Title="MainPage" Height="650" Width="1000" 
         Background="#36393F"
         ResizeMode="CanResizeWithGrip"
-        Icon="/Ikonka2.png"
+        Icon="/img/Ikonka2.png"
         WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
@@ -17,10 +17,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Window.DataContext>
+        <local:AppOperator/>
+    </Window.DataContext>
+    <Grid x:Name="AppGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -30,9 +34,31 @@
                 Grid.ColumnSpan="2"
                 Background="#252525">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="YellowGreen" FontSize="20" Content="🗕" Click="MinimalizeButton_Click"/>
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="Yellow" FontSize="20" Content="🗗" Margin="3,0,0,0" Click="MaximalizeButton_Click" Height="30" VerticalAlignment="Bottom"/>
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="OrangeRed" Content="✖" Margin="3,0,0,0" Click="ExitButton_Click" Height="30" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource RoundButton}"
+                        Width="30"
+                        Foreground="Gray"
+                        Background="YellowGreen"
+                        FontSize="20" Content="🗕"
+                        Click="MinimalizeButton_Click"/>
+                <Button Style="{StaticResource RoundButton}" 
+                        Width="30"
+                        Foreground="Gray"
+                        Background="Yellow"
+                        FontSize="20"
+                        Content="🗗"
+                        Margin="3,0,0,0"
+                        Click="MaximalizeButton_Click"
+                        Height="30" 
+                        VerticalAlignment="Bottom"/>
+                <Button Style="{StaticResource RoundButton}"
+                        Width="30"
+                        Foreground="Gray" 
+                        Background="OrangeRed"
+                        Content="✖"
+                        Margin="3,0,0,0"
+                        Click="ExitButton_Click"
+                        Height="30" 
+                        VerticalAlignment="Top"/>
             </StackPanel>
         </Border>
         <Grid Grid.Row="1"
@@ -42,22 +68,65 @@
                 <RowDefinition/>
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
-            <StackPanel Background="#2e3136" Orientation="Horizontal">
-                <Image  Height="50" Width="50">
+            <DockPanel>
+                <Image Margin="30,0,0,0"
+                       Height="50"
+                       Width="50">
                     <Image.Source>
                         <BitmapImage DecodePixelWidth="200"  
-                                 UriSource="/Ikonka2.png"/>
+                                 UriSource="/img/Ikonka2.png"/>
                     </Image.Source>
                 </Image>
-                <Label Content="Unifiy ®" Foreground="#92969c" FontWeight="DemiBold" FontSize="25" VerticalAlignment="Center"/>
-            </StackPanel>
+                <Label DockPanel.Dock="Right" 
+                       Content="Unifiy ®"
+                       Foreground="#92969c"
+                       FontWeight="DemiBold"
+                       FontSize="25"
+                       VerticalAlignment="Center"/>
+            </DockPanel>
             <StackPanel Grid.Row="1">
-                <Button Content="🔍 Szukaj" Style="{StaticResource OptionsLabels}"/>
-                <Button Content="🏠 Home" Style="{StaticResource OptionsLabels}"/>
-                <Button Content="  ♫ Playlisty" Style="{StaticResource OptionsLabels}"/>
+                <Button Content="🔍 Szukaj" 
+                        Style="{StaticResource OptionsLabels}"/>
+                <Button Content="🏠 Home" 
+                        Style="{StaticResource OptionsLabels}"/>
+                <Button Content="      ♫  Playlisty" 
+                        Style="{StaticResource OptionsLabels}"/>
             </StackPanel>
-            <Button Grid.Row="2" Background="#1e2024"/>
         </Grid>
-
+        <Grid Grid.Row="2"
+            Background="#292c30">
+            <Button Height="35" 
+                    Width="35" 
+                    Style="{StaticResource RoundButton}" 
+                    Grid.Row="2">
+                <Button.Background>
+                    <ImageBrush ImageSource="/img/user.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Grid Background="#16171a"
+              Grid.Row="2" 
+              Grid.Column="2" 
+              x:Name="MusicBar">
+            <StackPanel Orientation="Horizontal">
+                <Button  FontSize="30" 
+                    Foreground="White" 
+                    Content="▶" 
+                    BorderThickness="0" 
+                    Background="Transparent"
+                    Height="50" 
+                    Width="50"
+                    Style="{StaticResource OptionsLabels}">
+                    
+                </Button>
+                <ProgressBar  Foreground="White" 
+                              Value="50"
+                              BorderThickness="0" 
+                              Background="Gray"
+                              Height="5"
+                              Width="{Binding Path=ProgresBarWidth[0], Mode=OneWay}"/>
+            </StackPanel>
+           
+        </Grid>
     </Grid>
 </Window>
