@@ -53,8 +53,6 @@ namespace Lista6
         {
             double value = (MusicBar.ActualWidth/10)*6;          
             ao.ProgresBarWidth.Insert(0,value);
-
-
         }
      
     }
