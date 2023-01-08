@@ -124,7 +124,7 @@
                               BorderThickness="0" 
                               Background="Gray"
                               Height="5"
-                              Width="{Binding Path=ProgresBarWidth[0], Mode=OneWay}"/>
+                              Width="{Binding ElementName=MusicBar, Path=ActualWidth, Mode=OneWay}"/>
             </StackPanel>
            
         </Grid>
