@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SignUpPage" Height="650" Width="600"   
         MinHeight="550" MinWidth="400"
-        Background="#36393F"
+        Background="#252525"
         ResizeMode="CanResizeWithGrip"
         Icon="/img/Ikonka2.png"
         WindowStyle="None">
