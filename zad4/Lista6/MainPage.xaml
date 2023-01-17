@@ -6,10 +6,16 @@
         xmlns:local="clr-namespace:Lista6"
         mc:Ignorable="d"
         Title="MainPage" Height="650" Width="1000" 
-        Background="#36393F"
         ResizeMode="CanResizeWithGrip"
         Icon="/img/Ikonka2.png"
         WindowStyle="None">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="1.164,-0.352" StartPoint="0.452,1.962">
+            <GradientStop Color="#FF202020" Offset="0" />
+
+            <GradientStop Color="#FF545454" Offset="2.5" />
+        </LinearGradientBrush>
+    </Window.Background>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,37 +29,31 @@
     <Grid x:Name="AppGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border MouseDown="Border_MouseDown"
                 Grid.ColumnSpan="2"
-                Background="#252525">
+                Background="#16171a">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource RoundButton}"
+                <Button Style="{StaticResource TopBorderButtons}"
                         Width="30"
-                        Foreground="Gray"
-                        Background="YellowGreen"
                         FontSize="20" Content="🗕"
                         Click="MinimalizeButton_Click"/>
-                <Button Style="{StaticResource RoundButton}" 
-                        Width="30"
-                        Foreground="Gray"
-                        Background="Yellow"
+                <Button Style="{StaticResource TopBorderButtons}" 
+                        Width="30"                      
                         FontSize="20"
                         Content="🗗"
                         Margin="3,0,0,0"
                         Click="MaximalizeButton_Click"
                         Height="30" 
                         VerticalAlignment="Bottom"/>
-                <Button Style="{StaticResource RoundButton}"
+                <Button Style="{StaticResource TopBorderButtonRed}"
                         Width="30"
-                        Foreground="Gray" 
-                        Background="OrangeRed"
                         Content="✖"
                         Margin="3,0,0,0"
                         Click="ExitButton_Click"
@@ -62,7 +62,7 @@
             </StackPanel>
         </Border>
         <Grid Grid.Row="1"
-              Background="#292c30">
+              Background="#FF202020">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
@@ -93,7 +93,7 @@
                         Style="{StaticResource OptionsLabels}"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="2"
+        <!--<Grid Grid.Row="2"
             Background="#292c30">
             <Button Height="35" 
                     Width="35" 
@@ -103,10 +103,11 @@
                     <ImageBrush ImageSource="/img/user.png"/>
                 </Button.Background>
             </Button>
-        </Grid>
-        <Grid Background="#16171a"
+        </Grid>-->
+        <Grid  Background="#FF202020"
               Grid.Row="2" 
-              Grid.Column="2" 
+              Grid.Column="0"
+               Grid.ColumnSpan="2"
               x:Name="MusicBar">
             <StackPanel Orientation="Horizontal">
                 <Button  FontSize="30" 

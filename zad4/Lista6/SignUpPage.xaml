@@ -24,11 +24,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border MouseDown="Border_MouseDown"
-            Background="#252525">
+            Background="#16171a">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="YellowGreen" FontSize="20" Content="🗕" Click="MinimalizeButton_Click"/>
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="Yellow" FontSize="20" Content="🗗" Margin="3,0,0,0" Click="MaximalizeButton_Click" Height="30" VerticalAlignment="Bottom"/>
-                <Button Style="{StaticResource RoundButton}" Width="30" Foreground="Gray" Background="OrangeRed" Content="✖" Margin="3,0,0,0" Click="ExitButton_Click" Height="30" VerticalAlignment="Top"/>
+                <Button Style="{StaticResource TopBorderButtons}" Width="30" FontSize="20" Content="🗕" Click="MinimalizeButton_Click"/>
+                <Button Style="{StaticResource TopBorderButtons}" Width="30" FontSize="20" Content="🗗" Margin="3,0,0,0" Click="MaximalizeButton_Click" Height="30" VerticalAlignment="Bottom"/>
+                <Button Style="{StaticResource TopBorderButtonRed}" Width="30"  Content="✖" Margin="3,0,0,0" Click="ExitButton_Click" Height="30" VerticalAlignment="Top"/>
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="1" Orientation="Vertical">

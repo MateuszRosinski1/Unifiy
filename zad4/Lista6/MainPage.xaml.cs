@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Lista6.UserContollPanel;
 
 namespace Lista6
 {
@@ -16,6 +17,11 @@ namespace Lista6
             InitializeComponent();
             this.DataContext = ao;
             ao.ProgresBarWidth.Insert(0,471.59999999999997);
+            SearchPanel sp = new SearchPanel();
+            PlaylistUserControll puc = new PlaylistUserControll();  
+            Grid.SetColumn(puc,1);
+            Grid.SetRow(puc,1);
+            AppGrid.Children.Add(puc);
         }
 
         private void MinimalizeButton_Click(object sender, RoutedEventArgs e)
