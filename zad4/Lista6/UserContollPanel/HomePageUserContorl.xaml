@@ -5,9 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lista6.UserContollPanel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1050" d:DesignWidth="800">
     <Grid>
-        <TextBlock Foreground="White" Text="HomePanel"/>
-
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <Label Foreground="White" Margin="0,1000,0,0" Content="HomePanel"/>
+                
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

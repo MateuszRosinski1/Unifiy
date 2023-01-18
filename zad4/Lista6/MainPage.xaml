@@ -86,11 +86,14 @@
             </DockPanel>
             <StackPanel Grid.Row="1">
                 <Button Content="🔍 Szukaj" 
-                        Style="{StaticResource OptionsLabels}"/>
+                        Style="{StaticResource OptionsLabels}"
+                        Click="SearchButton_Click"/>
                 <Button Content="🏠 Home" 
-                        Style="{StaticResource OptionsLabels}"/>
+                        Style="{StaticResource OptionsLabels}"
+                        Click="HomeButton_Click"/>
                 <Button Content="      ♫  Playlisty" 
-                        Style="{StaticResource OptionsLabels}"/>
+                        Style="{StaticResource OptionsLabels}"
+                        Click="PlayListButton_Click"/>
             </StackPanel>
         </Grid>
         <!--<Grid Grid.Row="2"
@@ -105,26 +108,53 @@
             </Button>
         </Grid>-->
         <Grid  Background="#FF202020"
-              Grid.Row="2" 
-              Grid.Column="0"
+               Grid.Row="2" 
+               Grid.Column="0"
                Grid.ColumnSpan="2"
-              x:Name="MusicBar">
+               x:Name="MusicBar">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition x:Name="VolumeColumn" Width="200"/>
             </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Margin="30,0,0,0"
+                       Height="50"
+                       Width="50">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="200"  
+                                 UriSource="/img/Ikonka2.png"/>
+                        </Image.Source>
+                    </Image>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" >
+                    <TextBlock Foreground="White" 
+                               HorizontalAlignment="Center" 
+                               Text="Music Title"/>
+                    
+                    <TextBlock Foreground="Gray" 
+                               HorizontalAlignment="Center" 
+                               Text="Artist"/>
+                </StackPanel>
+                    
+
+            </Grid>
             
-                <Button Grid.Column="1" FontSize="30" 
+            <Button Grid.Column="1" FontSize="30" 
                     Foreground="White" 
                     Content="▶" 
                     BorderThickness="0" 
                     Background="Transparent"
                     Height="50" 
                     Width="50"
-                    Style="{StaticResource OptionsLabels}"/>
-
+                    Style="{StaticResource OptionsLabels}"
+                    Click="PlayPauseButton_Click"/>
+            
             <Grid Grid.Column="2" x:Name="ProgresBar">
                 <ProgressBar Foreground="White" 
                               Value="50"
@@ -133,8 +163,14 @@
                               Height="5"
                               Width="{Binding ElementName=ProgresBar, Path=ActualWidth, Mode=OneWay}"/>
             </Grid>
-            
+            <StackPanel Orientation="Horizontal" Grid.Column="3">
+                <ProgressBar VerticalAlignment="Center" Width="{Binding ElementName=VolumeColumn, Path=ActualWidth, Mode=OneWay}"/>
+            </StackPanel>
            
         </Grid>
+        <Grid x:Name="UserControlGird" Grid.Row="1" Grid.Column="1"/>
+
+
+
     </Grid>
 </Window>
