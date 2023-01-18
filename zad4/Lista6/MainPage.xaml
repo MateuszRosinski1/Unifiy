@@ -115,18 +115,24 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition x:Name="VolumeColumn" Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+             
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image Margin="30,0,0,0"
                        Height="50"
-                       Width="50">
+                       Width="50"
+                       HorizontalAlignment="Left">
                         <Image.Source>
                             <BitmapImage DecodePixelWidth="200"  
                                  UriSource="/img/Ikonka2.png"/>
@@ -155,21 +161,45 @@
                     Style="{StaticResource OptionsLabels}"
                     Click="PlayPauseButton_Click"/>
             
-            <Grid Grid.Column="2" x:Name="ProgresBar">
-                <ProgressBar Foreground="White" 
-                              Value="50"
+            <Grid Grid.Column="3" x:Name="ProgresBar">
+                <ProgressBar Foreground="White"                             
                               BorderThickness="0" 
                               Background="Gray"
                               Height="5"
+                              x:Name="MusicProgresBar"
                               Width="{Binding ElementName=ProgresBar, Path=ActualWidth, Mode=OneWay}"/>
             </Grid>
-            <StackPanel Orientation="Horizontal" Grid.Column="3">
-                <ProgressBar VerticalAlignment="Center" Width="{Binding ElementName=VolumeColumn, Path=ActualWidth, Mode=OneWay}"/>
-            </StackPanel>
-           
+
+            <Grid x:Name="VolumeColumn" Grid.Column="6" >
+
+                <ProgressBar x:Name="VolumeBar" 
+                             MouseLeftButtonDown="VolumeBar_MouseLeftButtonDown" 
+                             Height="5" 
+                             Value="50"
+                             Foreground="White" 
+                             Background="Gray" 
+                             VerticalAlignment="Center" 
+                             Width="{Binding ElementName=VolumeColumn, Path=ActualWidth, Mode=OneWay}"
+                             BorderThickness="0"/>
+
+            </Grid>
+            <Image HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Grid.Column="5"
+                   Height="20"
+                   Margin="0,0,5,0">
+                <Image.Source>
+                    <BitmapImage DecodePixelWidth="512" 
+                                 x:Name="bmpImg"
+                                 UriSource="/img/unmute.png"/>
+                </Image.Source>
+            </Image>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="lbStats" Foreground="White" FontSize="15"  Grid.Column="2" />
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="lbSoundTime" Foreground="White" FontSize="15"  Grid.Column="4" />
+
         </Grid>
         <Grid x:Name="UserControlGird" Grid.Row="1" Grid.Column="1"/>
-
+        
 
 
     </Grid>
