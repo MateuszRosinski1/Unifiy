@@ -109,24 +109,31 @@
               Grid.Column="0"
                Grid.ColumnSpan="2"
               x:Name="MusicBar">
-            <StackPanel Orientation="Horizontal">
-                <Button  FontSize="30" 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            
+                <Button Grid.Column="1" FontSize="30" 
                     Foreground="White" 
                     Content="▶" 
                     BorderThickness="0" 
                     Background="Transparent"
                     Height="50" 
                     Width="50"
-                    Style="{StaticResource OptionsLabels}">
-                    
-                </Button>
-                <ProgressBar  Foreground="White" 
+                    Style="{StaticResource OptionsLabels}"/>
+
+            <Grid Grid.Column="2" x:Name="ProgresBar">
+                <ProgressBar Foreground="White" 
                               Value="50"
                               BorderThickness="0" 
                               Background="Gray"
                               Height="5"
-                              Width="{Binding ElementName=MusicBar, Path=ActualWidth, Mode=OneWay}"/>
-            </StackPanel>
+                              Width="{Binding ElementName=ProgresBar, Path=ActualWidth, Mode=OneWay}"/>
+            </Grid>
+            
            
         </Grid>
     </Grid>

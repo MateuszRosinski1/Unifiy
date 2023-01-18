@@ -5,15 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lista6.UserContollPanel"
              mc:Ignorable="d"
-             Background="Pink"
              d:DesignHeight="1000" d:DesignWidth="800">
     <Grid>
         <ScrollViewer HorizontalAlignment="Right">
-            <Grid>
-                <Rectangle VerticalAlignment="Top" Fill="Gray" Width="100" Height="500"/>
-                <Rectangle VerticalAlignment="Bottom" Fill="Blue" Width="100" Height="500"/>
-            </Grid>
-            
+            <TextBlock Foreground="White" Text="PlaylistPanel"/>
+
         </ScrollViewer>
     </Grid>
 </UserControl>

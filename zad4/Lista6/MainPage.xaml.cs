@@ -18,10 +18,11 @@ namespace Lista6
             this.DataContext = ao;
             ao.ProgresBarWidth.Insert(0,471.59999999999997);
             SearchPanel sp = new SearchPanel();
-            PlaylistUserControll puc = new PlaylistUserControll();  
-            Grid.SetColumn(puc,1);
-            Grid.SetRow(puc,1);
-            AppGrid.Children.Add(puc);
+            PlaylistUserControll puc = new PlaylistUserControll();
+            HomePageUserContorl hp = new HomePageUserContorl();
+            Grid.SetColumn(hp,1);
+            Grid.SetRow(hp,1);
+            AppGrid.Children.Add(hp);
         }
 
         private void MinimalizeButton_Click(object sender, RoutedEventArgs e)
