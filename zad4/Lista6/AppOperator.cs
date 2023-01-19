@@ -1,10 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Windows;
 
 namespace Lista6
 {
-    internal class AppOperator
+    public class AppOperator
     {
-
+        
         
     }
 }

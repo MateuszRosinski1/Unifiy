@@ -10,7 +10,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <Label Foreground="White" Margin="0,1000,0,0" Content="HomePanel"/>
-                
+                 
             </StackPanel>
         </ScrollViewer>
     </Grid>
