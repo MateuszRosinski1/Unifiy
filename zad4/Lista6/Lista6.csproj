@@ -78,6 +78,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppOperator.cs" />
+    <Compile Include="Music.cs" />
     <Compile Include="PasswordHashMethod.cs" />
     <Compile Include="SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>

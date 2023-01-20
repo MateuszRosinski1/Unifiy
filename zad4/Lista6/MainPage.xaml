@@ -113,7 +113,7 @@
                Grid.ColumnSpan="2"
                x:Name="MusicBar">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
@@ -135,17 +135,18 @@
                        HorizontalAlignment="Left">
                         <Image.Source>
                             <BitmapImage DecodePixelWidth="200"  
-                                 UriSource="/img/Ikonka2.png"/>
+                                 UriSource=""/>
                         </Image.Source>
                     </Image>
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" >
+                <StackPanel x:Name="bla" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" >
                     <TextBlock Foreground="White" 
-                               HorizontalAlignment="Center" 
-                               Text="Music Title"/>
+                               HorizontalAlignment="Center"
+
+                               Text="{Binding Path=MusicTileAndAuthor[0],Mode=TwoWay}"/>
                     
                     <TextBlock Foreground="Gray" 
                                HorizontalAlignment="Center" 
-                               Text="Artist"/>
+                               Text="{Binding Path=MusicTileAndAuthor[1],Mode=TwoWay}"/>
                 </StackPanel>
                     
 

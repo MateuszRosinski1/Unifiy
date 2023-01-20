@@ -46,15 +46,8 @@
                             Margin="0,0,3,0"/>
 
                 </Grid>
-                <Grid Grid.Row="1" x:Name="suggestedGrid">
-
-
-                    
-
-                   
-
-
-
+                <Grid Grid.Row="1" >
+                    <StackPanel x:Name="suggestedGrid" Orientation="Vertical"/>
                 </Grid>
             </Grid>
         </ScrollViewer>

@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Lista6.UserContollPanel
 {
@@ -28,21 +21,23 @@ namespace Lista6.UserContollPanel
                                        "Reggae" , "Techno" , "Klasyczna" , "Podcast" ,
                                        "Rage" , "Drill"};
 
-
+        AppOperator ao;
         UniformGrid ug = new UniformGrid { 
             
             Name = "MainGrid",
 
         };
 
-        public SearchPanel()
+        MainPage mainPage;
+        public SearchPanel(AppOperator ao, MainPage m)
         {
             InitializeComponent();
-
-            RenderSuggested();
+            this.ao = ao;
+            this.mainPage = m;
+            RenderSearchView();
         }
 
-        private void RenderSuggested()
+        private void RenderSearchView()
         {
             
             Random rd = new Random();
@@ -94,12 +89,85 @@ namespace Lista6.UserContollPanel
             if(SearchTxtBox.Text != string.Empty)
             {
                  suggestedGrid.Children.Clear();
+                RenderSuggested(ao.MusicSearch(SearchTxtBox.Text));
             }
             else
             {
+                suggestedGrid.Children.Clear();
                 suggestedGrid.Children.Add(ug);
             }
+        }
 
+        private Grid RenderSuggested(List<Music> list)
+        {
+            Button btn;
+            StackPanel sp;
+            Grid grid = new Grid();
+            foreach (Music music in list)
+            {
+                
+                sp = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    Height = 50,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Center
+
+                };
+                btn = new Button
+                {
+                    Content = music.MusicAuthors.ToString() + " - " + music.MusicTitle.ToString(),
+                    FontSize = 20,
+                    FontWeight = FontWeights.DemiBold,
+                    Background = Brushes.Transparent,
+                    BorderBrush = Brushes.Transparent,
+                    Style = (Style)Application.Current.Resources["OptionsLabels"],                 
+                };
+                btn.Click += SelectThis;
+                sp.Children.Add(btn);
+                suggestedGrid.Children.Add(sp);
+            }
+            return grid;
+        }
+
+        private void SelectThis(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string text = btn.Content.ToString();
+            string Title = string.Empty;
+            string author = string.Empty;
+            for (int i = 1; i <= text.Length; i++)
+            {
+                if (text[i - 1].Equals(' ') && text[i].Equals('-') && text[i + 1].Equals(' '))
+                {
+                    for (int j = 0; j <= i - 2; j++)
+                    {
+                        author += text[j];
+                    }
+
+                    for (int j = i + 2; j <= text.Length - 1; j++)
+                    {
+                        Title += text[j];
+                    }
+                    break;
+                }
+            }
+            SqlCommand cmd = new SqlCommand("dbo.SelectMusic", ao.sqlCon);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = Title;
+            cmd.Parameters.Add("@BLOBauthors", System.Data.SqlDbType.VarChar, 50).Value = author;
+            ao.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            byte[] soundtrack = dr.GetValue(0) as byte[];
+            File.Delete("D:\\test.mp3");
+            File.WriteAllBytes("D:\\test.mp3", soundtrack);
+            ao.Close();
+
+            ao.MusicTileAndAuthor[0] = author;
+            ao.MusicTileAndAuthor[1] = Title;
+            
+            mainPage.MediaOpener();
         }
     }
 }

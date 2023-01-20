@@ -1,14 +1,12 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Lista6.UserContollPanel;
+using System;
 using System.Data.SqlClient;
 using System.IO;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Lista6.UserContollPanel;
 
 namespace Lista6
 {
@@ -17,25 +15,26 @@ namespace Lista6
     /// </summary>
     public partial class MainPage : Window
     {
+        
         bool MusicIsPlaying = false;
-        byte[] bytes; 
-        SearchPanel sp = new SearchPanel();
+        SearchPanel sp;
         PlaylistUserControll puc = new PlaylistUserControll();
         HomePageUserContorl hp = new HomePageUserContorl();
-        AppOperator ao = new AppOperator();
+        AppOperator ao;
         private MediaPlayer mp = new MediaPlayer();
         DispatcherTimer dt = new DispatcherTimer();
         
         public MainPage()
         {
             InitializeComponent();
-            UserControlGird.Children.Add(hp);
-            bytes = getMusic();
-            File.WriteAllBytes("D:\\test.mp3", bytes);
+            ao = new AppOperator();
+            sp = new SearchPanel(ao,this);
+            this.DataContext = ao;
+            UserControlGird.Children.Add(hp);           
             mp.Open(new Uri("D:\\test.mp3"));
             dt.Interval = TimeSpan.FromMilliseconds(100);
-            dt.Tick += timer_Tick;
-
+            dt.Tick += timer_Tick;   
+            
         }
 
         private void timer_Tick(object s,EventArgs e)
@@ -123,19 +122,6 @@ namespace Lista6
             }
         }
 
-        private byte[] getMusic()
-        {
-            using (SqlConnection cn = new SqlConnection("Data Source=DESKTOP-72V7OD8\\SQLEXPRESS;Initial Catalog=UnifiyDataBase;Integrated Security=True"))
-            using (SqlCommand cm = cn.CreateCommand())
-            {
-                cm.CommandText = "Select BLOBdata From BLOBMusic Where BLOBauthors = 'Slawomir'";
-                cn.Open();
-                return cm.ExecuteScalar() as byte[];
-            }
-
-
-        }
-
         private void VolumeBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             double MousePosition = e.GetPosition(VolumeBar).X;
@@ -158,6 +144,11 @@ namespace Lista6
             return ProgressBarValue;
         }
 
+        public void MediaOpener()
+        {
+            mp = new MediaPlayer();
+            mp.Open(new Uri("D:\\test.mp3"));
+        }
     }
 }
 //using (var connection = new SqlConnection("Data Source=DESKTOP-72V7OD8\\SQLEXPRESS;Initial Catalog=UnifiyDataBase;Integrated Security=True"))
