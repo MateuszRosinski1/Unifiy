@@ -9,8 +9,24 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
-                <Label Foreground="White" Margin="0,1000,0,0" Content="HomePanel"/>
-                 
+                <Label HorizontalAlignment="Center" Foreground="White" FontFamily="Cascadia Mono" FontSize="30"  FontWeight="Bold" Margin="0,0,0,0" Content="Sugerowani Artysci"/>
+                <StackPanel Orientation="Horizontal" x:Name="SuggestedArtists" Height="300">
+
+                    <Button BorderBrush="Transparent" Padding="0,0,0,10" Style="{StaticResource RoundButton}" Margin="30" Height="200" Width="175" Background="#FF005342">
+                        <StackPanel>
+                            <Image  Height="130" Width="100">
+                                <Image.Source>
+                                    <BitmapImage DecodePixelWidth="250" UriSource="/img/raper.png"></BitmapImage>
+                                </Image.Source>
+                            </Image>
+                            <Label Foreground="White" HorizontalAlignment="Center" Margin="0,20,0,0" FontFamily="Cascadia Mono" FontSize="15"  FontWeight="Bold" Content="Arist#1"/>
+
+
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

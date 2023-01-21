@@ -80,6 +80,7 @@
     <Compile Include="AppOperator.cs" />
     <Compile Include="Music.cs" />
     <Compile Include="PasswordHashMethod.cs" />
+    <Compile Include="Serialization.cs" />
     <Compile Include="SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
@@ -175,6 +176,8 @@
     <Content Include="img\mute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="img\playlist.png" />
+    <Resource Include="img\raper.png" />
     <Content Include="img\unmute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

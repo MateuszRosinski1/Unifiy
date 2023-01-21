@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Lista6
 {
@@ -26,13 +27,13 @@ namespace Lista6
             get { return musicImg; }
             set { musicImg = value; }
         }
-
+        [XmlAttribute("MusicTitle")]
         public string MusicTitle
         {
             get { return musicTitle; }
             set { musicTitle = value; }
         }
-
+        [XmlAttribute("MusicAuthors")]
         public string MusicAuthors
         {
             get { return musicauthors; }

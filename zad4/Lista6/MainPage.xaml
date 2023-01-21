@@ -8,7 +8,7 @@
         Title="MainPage" Height="650" Width="1200" MinHeight="650" MinWidth="1200"
         ResizeMode="CanResizeWithGrip"
         Icon="/img/Ikonka2.png"
-        WindowStyle="None">
+        WindowStyle="None" Closing="Window_Closing">
     <Window.Background>
         <LinearGradientBrush EndPoint="1.164,-0.352" StartPoint="0.452,1.962">
             <GradientStop Color="#FF202020" Offset="0" />
@@ -69,7 +69,7 @@
                 <RowDefinition Height="80"/>
             </Grid.RowDefinitions>
             <DockPanel>
-                <Image Margin="30,0,0,0"
+                <Image Margin="20,0,0,0"
                        Height="50"
                        Width="50">
                     <Image.Source>
@@ -82,18 +82,23 @@
                        Foreground="#92969c"
                        FontWeight="DemiBold"
                        FontSize="25"
+                       FontFamily="Cascadia Mono"
                        VerticalAlignment="Center"/>
             </DockPanel>
             <StackPanel Grid.Row="1">
-                <Button Content="🔍 Szukaj" 
-                        Style="{StaticResource OptionsLabels}"
-                        Click="SearchButton_Click"/>
                 <Button Content="🏠 Home" 
                         Style="{StaticResource OptionsLabels}"
-                        Click="HomeButton_Click"/>
+                        Click="HomeButton_Click"
+                        FontFamily="Cascadia Mono"/>
+                <Button Content="  🔍 Szukaj" 
+                        Style="{StaticResource OptionsLabels}"
+                        Click="SearchButton_Click"
+                        FontFamily="Cascadia Mono"/>
                 <Button Content="      ♫  Playlisty" 
                         Style="{StaticResource OptionsLabels}"
-                        Click="PlayListButton_Click"/>
+                        Click="PlayListButton_Click"
+                        FontFamily="Cascadia Mono"
+                        />
             </StackPanel>
         </Grid>
         <!--<Grid Grid.Row="2"
@@ -141,7 +146,7 @@
                 <StackPanel x:Name="bla" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" >
                     <TextBlock Foreground="White" 
                                HorizontalAlignment="Center"
-
+                               
                                Text="{Binding Path=MusicTileAndAuthor[0],Mode=TwoWay}"/>
                     
                     <TextBlock Foreground="Gray" 
@@ -159,6 +164,7 @@
                     Background="Transparent"
                     Height="50" 
                     Width="50"
+                    x:Name="PlayPauseBtn"
                     Style="{StaticResource OptionsLabels}"
                     Click="PlayPauseButton_Click"/>
             

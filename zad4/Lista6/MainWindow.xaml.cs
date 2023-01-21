@@ -50,10 +50,15 @@ namespace Lista6
                     this.Hide();
                     mp.Show();
                 }
+                else
+                {
+                    MessageBox.Show("Niepoprawny login lub haslo");
+
+                }
             }
             else
             {
-                MessageBox.Show("Uzytkownik o takim loginie nie istnieje");
+                MessageBox.Show("Niepoprawny login lub haslo");
             }
             sc.Close();
         }

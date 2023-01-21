@@ -73,7 +73,7 @@ namespace Lista6.UserContollPanel
                     Style = (Style)Application.Current.Resources["RoundButton"],
                     Background = lgb,
                     Foreground = Brushes.White,
-                    FontFamily = new FontFamily("Poppins"),
+                    FontFamily = new FontFamily("Cascadia Mono"),
                     FontSize = 20,
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Stretch, 
@@ -152,6 +152,7 @@ namespace Lista6.UserContollPanel
                     break;
                 }
             }
+            mainPage.MediaPause();
             SqlCommand cmd = new SqlCommand("dbo.SelectMusic", ao.sqlCon);
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = Title;

@@ -1,6 +1,5 @@
 ﻿using Lista6.UserContollPanel;
 using System;
-using System.Data.SqlClient;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,10 +29,18 @@ namespace Lista6
             ao = new AppOperator();
             sp = new SearchPanel(ao,this);
             this.DataContext = ao;
-            UserControlGird.Children.Add(hp);           
+            UserControlGird.Children.Add(hp);
+            if (File.Exists("D://test.xml"))
+            {
+                Music music = Serialization.DeserializeToObject<Music>("D://test.xml");
+                ao.MusicTileAndAuthor[1] = music.MusicAuthors;
+                ao.MusicTileAndAuthor[0] = music.MusicTitle;
+            }
             mp.Open(new Uri("D:\\test.mp3"));
+            LoadMusicBar();
             dt.Interval = TimeSpan.FromMilliseconds(100);
             dt.Tick += timer_Tick;   
+            
             
         }
 
@@ -146,8 +153,32 @@ namespace Lista6
 
         public void MediaOpener()
         {
+           
             mp = new MediaPlayer();
             mp.Open(new Uri("D:\\test.mp3"));
+            PlayPauseBtn.Content = "||";
+            MusicIsPlaying = true;
+            mp.Play();
+            dt.Start();
+        }
+
+        public void MediaPause()
+        {
+            PlayPauseBtn.Content = "▶";
+            MusicIsPlaying = false;
+            mp.Pause();
+            dt.Stop();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Music music = new Music(ao.MusicTileAndAuthor[1], ao.MusicTileAndAuthor[0]);
+            Serialization.SerializeToXml(music, "D:/test.xml");
+        }
+
+        private void LoadMusicBar()
+        {
+
         }
     }
 }
