@@ -61,22 +61,22 @@ namespace UnifiyAdminPanel
 
         private void AddMusic_Click(object s, RoutedEventArgs e)
         {
-   
-            SqlConnection sc = new SqlConnection("Data Source=DESKTOP-72V7OD8\\SQLEXPRESS;Initial Catalog=UnifiyDataBase;Integrated Security=True");
-            SqlCommand cmd = new SqlCommand("dbo.InsertMusic",sc);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add("@BLOBdata", System.Data.SqlDbType.VarBinary).Value = bytes;
-            cmd.Parameters.Add("@BLOBauthors", System.Data.SqlDbType.VarChar,50).Value = textboxmusicauthors.Text;
-            cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = textboxmusicname.Text;
             try
             {
+                SqlConnection sc = new SqlConnection("Data Source=DESKTOP-72V7OD8\\SQLEXPRESS;Initial Catalog=UnifiyDataBase;Integrated Security=True");
+                SqlCommand cmd = new SqlCommand("dbo.InsertMusic",sc);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add("@BLOBdata", System.Data.SqlDbType.VarBinary).Value = bytes;
+                cmd.Parameters.Add("@BLOBauthors", System.Data.SqlDbType.VarChar,50).Value = textboxmusicauthors.Text;
+                cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = textboxmusicname.Text;
+            
                 sc.Open();
                 cmd.ExecuteNonQuery();
                 sc.Close();
             }
             catch (SqlException se)
             {
-                throw se;
+                MessageBox.Show("Problem z baza danych, Sprawdz wszystkie pola");
             }
 
         }

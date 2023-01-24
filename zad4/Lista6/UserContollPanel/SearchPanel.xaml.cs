@@ -17,8 +17,8 @@ namespace Lista6.UserContollPanel
     {
         private string[] musicType = { "Pop", "Rap", "Rock", "K-pop", "Jazz", 
                                        "Trap", "Latin" , "Punk" , "Country" ,
-                                       "Disco polo" , "R&B" , "Metal" ,"Hip-Hop" ,
-                                       "Reggae" , "Techno" , "Klasyczna" , "Podcast" ,
+                                       "Disco\n polo" , "R&B" , "Metal" ,"Hip-Hop" ,
+                                       "Reggae" , "Techno" , "Podcast" ,
                                        "Rage" , "Drill"};
 
         AppOperator ao;
@@ -98,7 +98,7 @@ namespace Lista6.UserContollPanel
             }
         }
 
-        private Grid RenderSuggested(List<Music> list)
+        private void RenderSuggested(List<Music> list)
         {
             Button btn;
             StackPanel sp;
@@ -127,7 +127,6 @@ namespace Lista6.UserContollPanel
                 sp.Children.Add(btn);
                 suggestedGrid.Children.Add(sp);
             }
-            return grid;
         }
 
         private void SelectThis(object sender, EventArgs e)
@@ -153,16 +152,16 @@ namespace Lista6.UserContollPanel
                 }
             }
             mainPage.MediaPause();
-            SqlCommand cmd = new SqlCommand("dbo.SelectMusic", ao.sqlCon);
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = Title;
-            cmd.Parameters.Add("@BLOBauthors", System.Data.SqlDbType.VarChar, 50).Value = author;
             ao.Open();
-            SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dr = ao.getMusic(Title, author);
             dr.Read();
             byte[] soundtrack = dr.GetValue(0) as byte[];
-            File.Delete("D:\\test.mp3");
+            if(File.Exists("D:\\test.mp3"))
+            {
+                File.Delete("D:\\test.mp3");
+            }
             File.WriteAllBytes("D:\\test.mp3", soundtrack);
+            dr.Close();
             ao.Close();
 
             ao.MusicTileAndAuthor[0] = author;

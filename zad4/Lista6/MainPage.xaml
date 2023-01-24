@@ -16,13 +16,7 @@
             <GradientStop Color="#FF545454" Offset="2.5" />
         </LinearGradientBrush>
     </Window.Background>
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+    
     <Window.DataContext>
         <local:AppOperator/>
     </Window.DataContext>
@@ -79,14 +73,14 @@
                 </Image>
                 <Label DockPanel.Dock="Right" 
                        Content="Unifiy ®"
-                       Foreground="#92969c"
+                       Foreground="White"
                        FontWeight="DemiBold"
                        FontSize="25"
                        FontFamily="Cascadia Mono"
                        VerticalAlignment="Center"/>
             </DockPanel>
             <StackPanel Grid.Row="1">
-                <Button Content="🏠 Home" 
+                <Button Content="🏠 Home"                        
                         Style="{StaticResource OptionsLabels}"
                         Click="HomeButton_Click"
                         FontFamily="Cascadia Mono"/>

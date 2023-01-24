@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data.SqlClient;
 using System.IO;
 using System.Runtime.CompilerServices;
+using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
 
 namespace Lista6
 {
@@ -41,21 +43,84 @@ namespace Lista6
         public void Open() => cn.Open();
         public void Close() => cn.Close();
 
-        public void getMusic()
+        public SqlDataReader loginFun(string login)
         {
-            
-            using (SqlCommand cm = new SqlCommand("dbo.getMusic",cn))
+            Open();
+            SqlCommand com = new SqlCommand("dbo.LoginProcedure", cn);
+            com.CommandType = System.Data.CommandType.StoredProcedure;
+            com.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 50).Value = login;
+            SqlDataReader sdr = com.ExecuteReader();
+            com.Dispose();
+            return sdr;
+        }
+
+
+        public SqlDataReader getMusic(string title,string author)
+        {
+
+            SqlCommand cmd = new SqlCommand("dbo.SelectMusic", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add("@BLOBtrackName", System.Data.SqlDbType.VarChar, 50).Value = title;
+            cmd.Parameters.Add("@BLOBauthors", System.Data.SqlDbType.VarChar, 50).Value = author;
+            SqlDataReader sdr= cmd.ExecuteReader();
+            return sdr;
+        }
+
+        public bool UniqeLogin(string login)
+        {
+            Open();
+            SqlCommand cmd = new SqlCommand("dbo.UniqeLogin", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 50).Value = login;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if(sdr.Read())
             {
-
-                Open();
-                byte[] bytes = cm.ExecuteScalar() as byte[];
-                Close();
-                File.WriteAllBytes("D:\\test.mp3", bytes);
+                Close();            
+                return false;
             }
+            else
+            {
+                Close();
+                return true;
+            }
+        }
 
+        public bool UniqeEmail(string email)
+        {
+            Open();
+            SqlCommand cmd = new SqlCommand("dbo.UniqeEmail", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 50).Value = email;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                Close();
+                return false;
+            }
+            else
+            {
+                Close();
+                return true;
+            }
 
         }
 
+        public SqlCommand InsertUser(string login,string password,string salt,string email)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            SqlCommand cmd = new SqlCommand("dbo.InsertUser", cn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add("@login", System.Data.SqlDbType.VarChar, 50).Value = login;
+            cmd.Parameters.Add("@password", System.Data.SqlDbType.VarChar, int.MaxValue).Value = password;
+            cmd.Parameters.Add("@salt", System.Data.SqlDbType.VarChar, int.MaxValue).Value = salt;
+            cmd.Parameters.Add("@email", System.Data.SqlDbType.VarChar, 50).Value = email;
+            adapter.InsertCommand = cmd;
+            Open();
+            adapter.InsertCommand.ExecuteNonQuery();
+            Close();
+            return cmd;
+
+        }
 
         public List<Music> MusicSearch(string txt)
         {

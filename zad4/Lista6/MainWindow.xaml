@@ -10,13 +10,7 @@
         Background="#252525"
         ResizeMode="CanResizeWithGrip"
         Icon="/img/Ikonka2.png" WindowStyle="None">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+    
     
     <Grid>
         <Grid.RowDefinitions>
@@ -32,7 +26,7 @@
             </StackPanel>
         </Border>
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Grid>
+            <!--<Grid>
                 <StackPanel Orientation="Horizontal">
                     <Button Background="Transparent">
                         <Image>
@@ -51,7 +45,7 @@
                         </Image>
                     </Button>
                 </StackPanel>
-            </Grid>
+            </Grid>-->
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,30,0,50">
                 <Image Height="50" Width="50">
                     <Image.Source>
@@ -59,7 +53,7 @@
                                  UriSource="/img/Ikonka2.png"/>
                     </Image.Source>
                 </Image>
-                <Label Content="Unifiy ®" Foreground="#92969c" FontWeight="DemiBold" FontSize="25" VerticalAlignment="Center"/>
+                <Label FontFamily="Cascadia Mono" Content="Unifiy ®" Foreground="#92969c" FontWeight="DemiBold" FontSize="25" VerticalAlignment="Center"/>
 
             </StackPanel>
 
@@ -67,28 +61,38 @@
 
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Label Foreground="#92969c" Content="Login" Margin="0,10,0,0"/>
-                <TextBox x:Name="textboxlogin" Style="{StaticResource RoundedTextBox}" HorizontalContentAlignment="Center"  BorderBrush="Transparent" Padding="0,5,0,0" Background="#555a63" Height="30" Width="300" Margin="0,10,0,50"/>
+                <Label FontFamily="Cascadia Mono" Foreground="#92969c" Content="Login" Margin="0,10,0,0"/>
+                <TextBox FontFamily="Cascadia Mono" Foreground="White" x:Name="textboxlogin" Style="{StaticResource RoundedTextBox}" HorizontalContentAlignment="Center"  BorderBrush="Transparent" Padding="0,5,0,0" Background="#555a63" Height="30" Width="300" Margin="0,10,0,50"/>
             </StackPanel>
             
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Label Foreground="#92969c" Content="Password" Margin="0,10,0,0"/>
+                <Label FontFamily="Cascadia Mono" Foreground="#92969c" Content="Password" Margin="0,10,0,0"/>
                 <Border Height="30" Width="300" BorderThickness="1" Background="#555a63" CornerRadius="4" Margin="0,10,20,50">
-                    <PasswordBox HorizontalContentAlignment="Center" Padding="0,5,0,0" Height="30" Width="280" x:Name="pbHaslo" Background="#555a63" BorderThickness="0"/>
+                    <PasswordBox Foreground="White" HorizontalContentAlignment="Center" Padding="0,5,0,0" Height="30" Width="280" x:Name="pbHaslo" Background="#555a63" BorderThickness="0"/>
                 </Border>
             </StackPanel>
             
-            <Button Content="Zaloguj" IsDefault="True" Width="150" Height="50" Click="LogInButton_Click" Margin="0,-10,0,10">
+            <Button Content="Zaloguj" IsDefault="True" Width="150" Height="50" Click="LogInButton_Click" Margin="30,-15,0,15">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="6"/>
                     </Style>
                 </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontFamily" Value="Cascadia Mono"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="#3d3d3d"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </Button.Style>
             </Button>
             
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Label Margin="150,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold" Foreground="#151617" Height="30" Content="Nie masz jescze konta?"/>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="Label_LeftButtonDown" Height="30" FontSize="15" FontStyle="Italic" FontWeight="DemiBold" Content="Zarejestruj się! "  Grid.Column="1" Margin="0,0,133,70">
+                <Label FontFamily="Cascadia Mono" Margin="150,0,0,0" Foreground="#92969c" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="15" FontStyle="Oblique" FontWeight="DemiBold"  Height="30" Content="Nie masz jescze konta?"/>
+                <Label FontFamily="Cascadia Mono" HorizontalAlignment="Center" VerticalAlignment="Top" MouseLeftButtonDown="Label_LeftButtonDown" Height="30" FontSize="15" FontStyle="Italic" FontWeight="DemiBold" Content="Zarejestruj się! "  Grid.Column="1" Margin="0,0,133,70">
                     <Label.Style>
                         <Style TargetType="Label">
                             <Setter Property="Foreground" Value="#095db5"/>

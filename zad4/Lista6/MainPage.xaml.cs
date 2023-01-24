@@ -36,8 +36,7 @@ namespace Lista6
                 ao.MusicTileAndAuthor[1] = music.MusicAuthors;
                 ao.MusicTileAndAuthor[0] = music.MusicTitle;
             }
-            mp.Open(new Uri("D:\\test.mp3"));
-            LoadMusicBar();
+            mp.Open(new Uri("D:\\test.mp3"));           
             dt.Interval = TimeSpan.FromMilliseconds(100);
             dt.Tick += timer_Tick;   
             
@@ -134,14 +133,14 @@ namespace Lista6
             double MousePosition = e.GetPosition(VolumeBar).X;
             this.VolumeBar.Value = SetProgressBarValue(MousePosition);
             mp.Volume = VolumeBar.Value/100;
-            if (VolumeBar.Value < 5)
-            {
-                bmpImg.UriSource = new Uri("C:\\Users\\mateu\\source\\repos\\Test\\zad4\\Lista6\\img\\mute.png");
-            }
-            else
-            {
-                bmpImg.UriSource = new Uri("C:\\Users\\mateu\\source\\repos\\Test\\zad4\\Lista6\\img\\unmute.png");
-            }
+            //if (VolumeBar.Value < 5)
+            //{
+            //    bmpImg.UriSource = new Uri("C:\\Users\\mateu\\source\\repos\\Test\\zad4\\Lista6\\img\\mute.png");
+            //}
+            //else
+            //{
+            //    bmpImg.UriSource = new Uri("C:\\Users\\mateu\\source\\repos\\Test\\zad4\\Lista6\\img\\unmute.png");
+            //}
         }
 
         private double SetProgressBarValue(double MousePosition)
@@ -175,32 +174,5 @@ namespace Lista6
             Music music = new Music(ao.MusicTileAndAuthor[1], ao.MusicTileAndAuthor[0]);
             Serialization.SerializeToXml(music, "D:/test.xml");
         }
-
-        private void LoadMusicBar()
-        {
-
-        }
     }
 }
-//using (var connection = new SqlConnection("Data Source=DESKTOP-72V7OD8\\SQLEXPRESS;Initial Catalog=UnifiyDataBase;Integrated Security=True"))
-//{
-//    connection.Open();
-//    using (var cmd = new SqlCommand("Select BLOBdata From BLOBMusic Where BLOBauthors = 'Slawomir'", connection))
-//    {
-//        using (SqlDataReader dr = cmd.ExecuteReader(System.Data.CommandBehavior.SequentialAccess))
-//        {
-//            if (dr.FieldCount > 0)
-//            {
-//                while (dr.Read())
-//                {
-//                    var columnIndex = dr.GetOrdinal("BLOBmusic");
-//                    var stream = dr.GetSqlBinary(columnIndex);
-//                    var memStream = new MemoryStream(stream.Value);
-//                    IRandomAccessStream randomAccessStream = memStream.AsRandomAccessStream();
-//                    mp.Source = MediaSource.CreateFromStream(randomAccessStream, "audio/mpeg");
-//                    mp.Play();
-//                }
-//            }
-//        }
-//    }
-//}
