@@ -36,6 +36,15 @@ namespace Lista6
                 ao.MusicTileAndAuthor[1] = music.MusicAuthors;
                 ao.MusicTileAndAuthor[0] = music.MusicTitle;
             }
+            else
+            {
+                File.Create("D://test.xml");
+            }
+
+            if(!File.Exists("D://test.mp3"))
+            {
+                File.Create("D://test.mp3");
+            }
             mp.Open(new Uri("D:\\test.mp3"));           
             dt.Interval = TimeSpan.FromMilliseconds(100);
             dt.Tick += timer_Tick;   
@@ -47,9 +56,14 @@ namespace Lista6
         {
             if(mp.Source != null)
             {
-                lbStats.Content = String.Format(mp.Position.ToString(@"mm\:ss"));
-                lbSoundTime.Content = String.Format(mp.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
-                MusicProgresBar.Value = (mp.Position.TotalSeconds * 100 )/mp.NaturalDuration.TimeSpan.TotalSeconds;
+                try
+                {
+                    lbStats.Content = String.Format(mp.Position.ToString(@"mm\:ss"));
+                    lbSoundTime.Content = String.Format(mp.NaturalDuration.TimeSpan.ToString(@"mm\:ss"));
+                    MusicProgresBar.Value = (mp.Position.TotalSeconds * 100) / mp.NaturalDuration.TimeSpan.TotalSeconds;
+                }
+                catch { }
+              
             }
             else
             {

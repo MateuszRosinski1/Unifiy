@@ -94,7 +94,6 @@ namespace Lista6.UserContollPanel
             else
             {
                 suggestedGrid.Children.Clear();
-                suggestedGrid.Children.Add(ug);
             }
         }
 
