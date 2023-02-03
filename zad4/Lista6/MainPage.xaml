@@ -200,8 +200,5 @@
 
         </Grid>
         <Grid x:Name="UserControlGird" Grid.Row="1" Grid.Column="1"/>
-        
-
-
     </Grid>
 </Window>

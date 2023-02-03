@@ -63,12 +63,11 @@ namespace Lista6.UserContollPanel
                 lgb.GradientStops.Add(new GradientStop(color,0.0));
                 color = Color.FromArgb((byte)rd.Next(256), (byte)rd.Next(256), (byte)rd.Next(256), (byte)rd.Next(256));
                 lgb.GradientStops.Add(new GradientStop(color, 1.0));
+
                 btn = new Button
                 {
                     Content = musicType[i],
-                    Margin = new Thickness(10),
-                    Height = 150,
-                    Width = 150,
+                    Margin = new Thickness(5),
                     Padding = new Thickness(0, 0, 50, 80),
                     Style = (Style)Application.Current.Resources["RoundButton"],
                     Background = lgb,
@@ -78,7 +77,7 @@ namespace Lista6.UserContollPanel
                     FontWeight = FontWeights.Bold,
                     HorizontalAlignment = HorizontalAlignment.Stretch, 
                     VerticalAlignment = VerticalAlignment.Stretch,
-                };          
+                };
                 ug.Children.Add(btn);
             }
             suggestedGrid.Children.Add(ug); 
