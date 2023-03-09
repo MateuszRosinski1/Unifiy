@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unifiy", "Lista6\Unifiy.csproj", "{0A18080E-58A9-494D-9DB4-5F95B0F89002}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unifiy", "Unifiy\Unifiy.csproj", "{0A18080E-58A9-494D-9DB4-5F95B0F89002}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnifiyAdminPanel", "UnifiyAdminPanel\UnifiyAdminPanel.csproj", "{314DC7FF-70B9-48CA-9EB1-196E20D96807}"
 EndProject
